@@ -1,0 +1,29 @@
+{
+  "name": "indigerd/hydrator",
+  "description": "Hydrate data to objects and extract data from objects",
+  "keywords": ["library", "hydrate", "extract", "hydrator", "ddd"],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alexander Stepanenko",
+      "email": "alex.stepanenko@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "@stable"
+  },
+  "autoload": {
+    "psr-4": {
+      "Indigerd\\Hydrator\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Indigerd\\Hydrator\\Test\\": "tests"
+    }
+  }
+}
