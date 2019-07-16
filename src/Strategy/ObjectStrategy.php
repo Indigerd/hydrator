@@ -18,12 +18,15 @@ class ObjectStrategy implements StrategyInterface
 
     public function hydrate($value, ?array $data = null, $oldValue = null)
     {
-        $data = \array_merge($oldValue, $value);
+        $data = \array_merge((array)$oldValue, (array)$value);
         return $this->hydrator->hydrate($this->entityName, $data);
     }
 
     public function extract($value, ?object $object = null)
     {
+        if (!\is_object($value)) {
+            return [];
+        }
         return $this->hydrator->extract($value);
     }
 }
