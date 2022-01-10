@@ -34,7 +34,7 @@ class PropertyArrayAccessor implements AccessorInterface
     {
         $property = $this->getPropertyArray($reflection);
         $properties = (array)$property->getValue($object);
-        return (isset($properties[$name]) ? $properties[$name] : null);
+        return ($properties[$name] ?? null);
     }
 
     public function getPropertyNames(object $object, ReflectionClass $reflection)
