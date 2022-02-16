@@ -24,7 +24,12 @@ class PropertyAccessor implements AccessorInterface
             if ($property->isPrivate() || $property->isProtected()) {
                 $property->setAccessible(true);
             }
-            return $property->getValue($object);
+            
+            if ($property->isInitialized($object)) {
+                return $property->getValue($object);
+            }
+
+            return null;
         } catch (\ReflectionException $e) {}
     }
 
