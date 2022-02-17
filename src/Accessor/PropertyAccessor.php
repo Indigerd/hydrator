@@ -25,11 +25,17 @@ class PropertyAccessor implements AccessorInterface
                 $property->setAccessible(true);
             }
             
-            if ($property->isInitialized($object)) {
-                return $property->getValue($object);
+            $typedProperty = \version_compare(PHP_VERSION, '7.4.0', '>=');
+            
+            if ($typedProperty) {
+                if ($property->isInitialized($object)) {
+                    return $property->getValue($object);
+                }
+                
+                return null;
             }
 
-            return null;
+            return $property->getValue($object);
         } catch (\ReflectionException $e) {}
     }
 
